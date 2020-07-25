@@ -10,6 +10,8 @@ class node
  node *delet(node *head);
  node *merge(node *,node *);
  node *mergeSortedlist(node *,node *);
+ node *removeDuplicateFromSortedList(node *);
+ void removeDuplicates(node *);
  void reverseList(node *);
  int compareLists(node *,node*);
  void display(node *head);
@@ -181,6 +183,45 @@ node *node::delet(node *head)
     return head;
 }
 
+//work for only sorted list
+node *node::removeDuplicateFromSortedList(node *head)
+{
+    node *res = head;
+    while (head->next !=NULL) {
+        if (head->next->data == head->data) {
+            node *toDelete = head->next;
+            head->next = head->next->next;
+            delete toDelete;
+        }
+        else {
+            head = head->next;
+        }
+    }
+    return res;
+}
+
+//work for both sorted and unsorted linked lists
+void node::removeDuplicates(node *head) {
+int x;
+node *p;
+
+while(head != NULL)
+{
+    x=head->data;
+    p=head;
+    while(p->next != NULL)
+    {
+        if(p->next->data==x)//delete
+           p->next=p->next->next;
+        else
+         p=p->next;
+    }
+
+    head=head->next;
+}
+}
+
+
 node *node::merge(node *head,node *head1)
 {
     node *temp=head;
@@ -320,7 +361,9 @@ int main()
         cout<<"1.create list 1\n2.create list 2\n3.Insert(applicable for only List 1)"
                "\n4.Delete(applicable for only List 1)\n5.Display list 1"
                "\n6.Display list 2\n7.Merge list 1 and list 2\n"
-               "8.Reverse list( applicable for only list 1)\n9.compareLists\n10.sort and Merge lists\n";
+               "8.Reverse list( applicable for only list 1)\n9.compareLists\n10.sort and Merge lists\n"
+               "11.Removing duplication from sorted linked list\n12.Removing duplication from linked list\n";
+  
         cin>>choose;
         switch(choose)
         {
@@ -383,6 +426,22 @@ int main()
              The second linked list is: 3 -> 4 -> NULL
              Hence, the merged linked list is: 1 -> 2 -> 3 -> 3 -> 4 -> NULL
              */
+            break;
+
+          case 11:
+            {
+            n.removeDuplicateFromSortedList(head);
+            cout<<"List after removing dulplicate elements(sorted list): \n";
+            n.display(head);
+            }
+            break;
+
+            case 12:
+            {
+            n.removeDuplicates(head);
+            cout<<"List after removing dulplicate elements( unsorted or sorted list): \n";
+            n.display(head);
+            }
             break;
 
         }
