@@ -1,2 +1,2 @@
 # Data-Structure
-contains all operation on data structure.
+contains all data structure with there operations.
