@@ -221,7 +221,6 @@ while(head != NULL)
 }
 }
 
-
 node *node::merge(node *head,node *head1)
 {
     node *temp=head;
@@ -241,7 +240,6 @@ node *node::merge(node *head,node *head1)
     return head;
 }
 
-
 node *node::mergeSortedlist(node *head,node *head1)
 {
 
@@ -250,8 +248,7 @@ if(head==NULL)
  return head1;
 if(head1==NULL)
  return head;
-
-
+ 
 //coping first element
 if(head->data < head1->data)
 {
@@ -288,7 +285,6 @@ else
      }
 return start;
 }
-
 
 void node::reverseList(node *head)
 {
