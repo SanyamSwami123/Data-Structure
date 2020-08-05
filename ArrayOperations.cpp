@@ -413,3 +413,325 @@ int main()
     return 0;
 }
 */
+
+/*
+Equilibrium point
+
+Q.Given an array A of N positive numbers. The task is to find the position where equilibrium first occurs
+in the array. Equilibrium position in an array is a position such that the sum of 
+elements before it is equal to the sum of elements after it.
+
+Input: A[] = {-7, 1, 5, 2, -4, 3, 0}
+Output: 2
+2 is an equilibrium element, because:
+A[0] + A[1] + A[2] = A[4] + A[5] + A[6]
+
+#include<iostream>
+using namespace std;
+
+int EquilibriumPoint(int n)
+{
+ int i,j;
+ int a[n];
+ 
+ for(i=0;i<n;i++)
+  cin>>a[i];
+  
+ for(i=0;i<n;i++)
+ {
+     
+     int leftSum=0;
+     for(j=0;j<i;j++)
+     {
+         leftSum=leftSum+a[j];
+     }
+     
+     int rightSum=0;
+     for(j=i+1;j<n;j++)
+     {
+         rightSum=rightSum+a[j];
+     }
+     
+     if(rightSum == leftSum)
+       return a[i];
+ }
+ 
+ return -1;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n;
+        int result = EquilibriumPoint(n);
+        cout<<result<<"\n";
+    }
+    return 0;
+}
+*/
+
+/*
+Leaders in an array
+
+Q.Given an array of positive integers. Your task is to find the leaders in the array.
+Note: An element of array is leader if it is greater than or equal to all 
+the elements to its right side. Also, the rightmost element is always a leader. 
+
+Example:
+Input:
+3
+6
+16 17 4 3 5 2
+5
+1 2 3 4 0
+5
+7 4 5 7 3
+Output:
+17 5 2
+4 0
+7 7 3
+
+Explanation:
+Testcase 3: All elements on the right of 7 (at index 0) are smaller than or equal to 7. 
+Also, all the elements of right side of 7 (at index 3) are smaller than 7. And, the last 
+element 3 is itself a leader since no elements are on its right.
+
+#include<iostream>
+using namespace std;
+int LeaderArray(int n)
+{
+int a[n];
+for(int i=0;i<n;i++)
+    cin>>a[i];
+    
+    int flag=1;
+    int temp[n];
+    int k=0;
+for(int i=0;i<n;i++)
+{
+    for(int j=i+1;j<n;j++)
+    {
+     if(a[i]<a[j])
+     {
+         flag=0;
+         break;
+     }else
+     {
+         flag=1;
+     }
+    }
+    if(flag==1)
+    {
+        temp[k]=a[i];
+        k++;
+    }else{
+        continue;
+    }
+}
+ 
+ for(int i=0;i<k;i++)
+  cout<<temp[i]<<" ";
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n;
+        LeaderArray(n);
+        cout<<"\n";
+    }
+    return 0;
+}
+*/
+
+/*
+
+Minimum Platforms
+
+Given arrival and departure times of all trains that reach a 
+railway station. Your task is to find the minimum number of platforms 
+required for the railway station so that no train waits.
+
+Note: Consider that all the trains arrive on the same day and leave 
+on the same day. Also, arrival and departure times will not be same for
+a train, but we can have arrival time of one train equal to departure 
+of the other. In such cases, we need different platforms, i.e at any 
+given instance of time, same platform can not be used for both departure
+of a train and arrival of another.
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+void MinimumPlatform(int n)
+{
+    int arrival[n], departure[n];
+    
+    for(int i=0;i<n;i++)
+     cin>>arrival[i];
+     
+    for(int i=0;i<n;i++)
+     cin>>departure[i];
+     
+     //sort
+     sort(arrival,arrival+n);
+     sort(departure,departure+n);
+     
+     
+      int platformNeeded=0,result=0,i=0,j=0;
+      
+      while(i<n && j<n)
+      {
+          
+          if(arrival[i]<=departure[j])
+          {
+            platformNeeded++;
+            i++;
+          }
+          else if(arrival[i]>departure[j])
+          {
+              platformNeeded--;
+              j++;
+          }
+          
+          if(result<platformNeeded)
+          {
+              result=platformNeeded;
+          }
+      }
+      cout<<platformNeeded;
+}
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n;
+        MinimumPlatform(n);
+        cout<<"\n";
+    }
+    return 0;
+}
+*/
+
+/*
+Reverse the group ??????????
+#include<iostream>
+using namespace std;
+
+void ReverseArrayInGroup(int n,int p)
+{
+    int a[n];
+    for(int i=0;i<n;i++)
+     cin>>a[i];
+    
+    int temp[n];
+    int k=0;
+   
+   for(int i=0;i<n;i++)
+   {
+       int left=i;
+       
+   }
+    
+    for(int i=0;i<k;i++)
+     cout<<temp[i]<<" ";
+}
+int main()
+{
+    int t;
+    cin>>t;
+    int n,k;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n>>k;
+        ReverseArrayInGroup(n,k);
+    }
+    return 0;
+}
+*/
+
+/*
+
+Kth smallest element
+
+Given an array arr[] and a number K where K is smaller than size of array, 
+the task is to find the Kth smallest element in the given array. It is given 
+that all array elements are distinct.
+#include<algorithm>
+#include<iostream>
+#include<limits.h>
+using namespace std;
+
+void KsmallestElement(int n, int k)
+{
+int a[n];
+for(int i=0;i<n;i++)
+ cin>>a[i];
+ 
+sort(a,a+n);
+
+cout<<a[k-1];
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n,k;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n>>k; //n: no. of element in array, k=position of smallest elemnt
+        KsmallestElement(n,k);
+    }
+    return 0;
+}
+*/
+
+/*
+k largest(or smallest) elements in an array 
+
+//Write an efficient program for printing k largest elements in an array. Elements in array can be in any order.
+//For example, if given array is [1, 23, 12, 9, 30, 2, 50] 
+//and you are asked for the largest 3 elements i.e., k = 3 then your program should print 50, 30 and 23.
+
+
+#include<algorithm>
+#include<iostream>
+#include<limits.h>
+using namespace std;
+
+void KLargestElements(int n, int k)
+{
+    int a[n];
+    for(int i=0;i<n;i++)
+     cin>>a[i];
+    
+    sort(a,a+n);
+    
+    for(int i=n-1;i>k;i--)
+     cout<<a[i]<<" ";
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n,k;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n>>k; //n: no. of element in array, k=position of smallest elemnt
+        KLargestElements(n,k);
+    }
+}
+*/
