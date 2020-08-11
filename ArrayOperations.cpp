@@ -735,3 +735,514 @@ int main()
     }
 }
 */
+
+
+
+
+
+
+
+/*
+//Trapping Rain Water
+//Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+ void RainWaterTrap(int n)
+ {
+     int a[n];
+     for(int i=0;i<n;i++)
+      cin>>a[i];
+      
+      //logic
+      
+      // To store the maximum water  
+    // that can be stored
+      int result=0;
+      for(int i=1;i<n-1;i++)
+      {
+          // Find the maximum element on its left
+          int left=a[i];
+          for(int j=0;j<i;j++)
+          {
+           left=max(left,a[j]);    
+          }
+          
+          // Find the maximum element on its right
+          int right=a[i];
+          for(int j=i+1;j<n;j++)
+          {
+              right=max(right,a[j]);
+          }
+          
+          // Update the maximum water
+          result=result+(min(left,right)-a[i]);
+      }
+      
+      cout<<result<<"\n";
+ }
+ 
+int main()
+{
+int t;
+cin>>t;
+int n;
+for(int i=1;i<=t;i++)
+ {
+     cin>>n;
+     RainWaterTrap(n);
+ }
+    return 0;
+}
+*/
+
+/*
+#include<iostream>
+using namespace std;
+void chocolate(int n,int m)
+{
+    int a[n];
+    for(int i=0;i<n;i++)
+     cin>>a[i];
+    
+    int result;
+    //logic
+    for(int i=0;i<n-m;i++)
+    {
+        for(int j=i;j<m;j++)
+        {
+            
+        }
+    }
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n,m;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n>>m;
+        chocolate(n,m);
+    }
+    return 0;
+}
+*/
+
+/*
+Find a partition point in array
+or
+Element with left side smaller and right side greater
+Given an unsorted array of size N. Find the first element in array such that all of its left elements are smaller and all right elements to it are greater than it.
+
+Note: Left and right side elements can be equal to required element. And extreme elements cannot be required element.
+
+Example:
+Input:
+3
+4
+4 2 5 7
+3
+11 9 12
+6
+4 3 2 7 8 9
+
+Output:
+5
+-1
+7
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int fun(int n)
+{
+    int a[n];
+    for(int i=0;i<n;i++)
+     cin>>a[i];
+    
+    
+    
+    for(int i=1;i<n-1;i++)
+    {
+        int flag=0;
+       for(int j=0;j<i;j++)
+       {
+           if(a[i]<=a[j])
+            {
+                flag=1;
+                break;
+            }
+            
+       }
+       
+       for(int j=i+1;j<n;j++)
+       {
+           if(a[i]>=a[j])
+            {
+            flag=1;
+            break;
+           }
+       }
+       
+       if(flag==0)
+        return a[i];
+    }
+return -1;    
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n;
+        int result=fun(n);
+        cout<<result<<"\n";
+    }
+    return 0;
+}
+*/
+
+/*
+Convert array into Zig-Zag fashion
+Given an array A (distinct elements) of size N. Rearrange the elements of array in zig-zag fashion. The converted array should be in form a < b > c < d > e < f. The relative order of elements is same in the output i.e you have to iterate on the original array only.
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+void fun(int n)
+{
+    int a[n];
+    for(int i=0;i<n;i++)
+     cin>>a[i];
+    
+    bool flag=true;
+    for(int i=0;i<n;i++)
+    {
+        if(flag)
+        {
+            if(a[i]>a[i+1])
+             swap(a[i],a[i+1]);
+        }
+        else{
+            if(a[i]<a[i+1])
+            {
+                swap(a[i],a[i+1]);
+            }
+        }
+        
+        flag=!flag;
+    }
+    for(int i=0;i<n;i++)
+     cout<<a[i]<<" ";
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n;
+        fun(n);
+    }
+    return 0;
+}
+*/
+
+/*
+
+Find the index of first 1 in a sorted array of 0’s and 1’s
+Last Updated: 22-07-2019
+Given a sorted array consisting 0’s and 1’s. The problem is to find the index of first ‘1’ in the sorted array. It could be possible that the array 
+consists of only 0’s or only 1’s. If 1’s are not present in the array then print “-1”.
+
+Examples :
+
+Input : arr[] = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1}
+Output : 6
+The index of first 1 in the array is 6.
+
+Input : arr[] = {0, 0, 0, 0}
+Output : -1
+1's are not present in the array.
+
+
+#include<iostream>
+using namespace std;
+
+int fun(int n)
+{
+int a[n];
+for(int i=0;i<n;i++)
+ cin>>a[i];
+ 
+for(int i=0;i<n;i++)
+{
+    if(a[i]==1)
+     return i;
+}
+return -1;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=n;i++)
+    {
+     cin>>n;
+     int result=fun(n);
+     cout<<result<<"\n";
+    }
+    return 0;
+}
+*/
+
+
+
+/*
+//Trapping Rain Water
+//Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+ void RainWaterTrap(int n)
+ {
+     int a[n];
+     for(int i=0;i<n;i++)
+      cin>>a[i];
+      
+      //logic
+      
+      // To store the maximum water  
+    // that can be stored
+      int result=0;
+      for(int i=1;i<n-1;i++)
+      {
+          // Find the maximum element on its left
+          int left=a[i];
+          for(int j=0;j<i;j++)
+          {
+           left=max(left,a[j]);    
+          }
+          
+          // Find the maximum element on its right
+          int right=a[i];
+          for(int j=i+1;j<n;j++)
+          {
+              right=max(right,a[j]);
+          }
+          
+          // Update the maximum water
+          result=result+(min(left,right)-a[i]);
+      }
+      
+      cout<<result<<"\n";
+ }
+ 
+int main()
+{
+int t;
+cin>>t;
+int n;
+for(int i=1;i<=t;i++)
+ {
+     cin>>n;
+     RainWaterTrap(n);
+ }
+    return 0;
+}
+*/
+
+
+/*
+Find a partition point in array
+or
+Element with left side smaller and right side greater
+Given an unsorted array of size N. Find the first element in array such that all of its left elements are smaller and all right elements to it are greater than it.
+
+Note: Left and right side elements can be equal to required element. And extreme elements cannot be required element.
+
+Example:
+Input:
+3
+4
+4 2 5 7
+3
+11 9 12
+6
+4 3 2 7 8 9
+
+Output:
+5
+-1
+7
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int fun(int n)
+{
+    int a[n];
+    for(int i=0;i<n;i++)
+     cin>>a[i];
+    
+    
+    
+    for(int i=1;i<n-1;i++)
+    {
+        int flag=0;
+       for(int j=0;j<i;j++)
+       {
+           if(a[i]<=a[j])
+            {
+                flag=1;
+                break;
+            }
+            
+       }
+       
+       for(int j=i+1;j<n;j++)
+       {
+           if(a[i]>=a[j])
+            {
+            flag=1;
+            break;
+           }
+       }
+       
+       if(flag==0)
+        return a[i];
+    }
+return -1;    
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n;
+        int result=fun(n);
+        cout<<result<<"\n";
+    }
+    return 0;
+}
+*/
+
+/*
+Convert array into Zig-Zag fashion
+Given an array A (distinct elements) of size N. Rearrange the elements of array in zig-zag fashion. The converted array should be in form a < b > c < d > e < f. The relative order of elements is same in the output i.e you have to iterate on the original array only.
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+void fun(int n)
+{
+    int a[n];
+    for(int i=0;i<n;i++)
+     cin>>a[i];
+    
+    bool flag=true;
+    for(int i=0;i<n;i++)
+    {
+        if(flag)
+        {
+            if(a[i]>a[i+1])
+             swap(a[i],a[i+1]);
+        }
+        else{
+            if(a[i]<a[i+1])
+            {
+                swap(a[i],a[i+1]);
+            }
+        }
+        
+        flag=!flag;
+    }
+    for(int i=0;i<n;i++)
+     cout<<a[i]<<" ";
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=t;i++)
+    {
+        cin>>n;
+        fun(n);
+    }
+    return 0;
+}
+*/
+
+/*
+
+Find the index of first 1 in a sorted array of 0’s and 1’s
+Last Updated: 22-07-2019
+Given a sorted array consisting 0’s and 1’s. The problem is to find the index of first ‘1’ in the sorted array. It could be possible that the array 
+consists of only 0’s or only 1’s. If 1’s are not present in the array then print “-1”.
+
+Examples :
+
+Input : arr[] = {0, 0, 0, 0, 0, 0, 1, 1, 1, 1}
+Output : 6
+The index of first 1 in the array is 6.
+
+Input : arr[] = {0, 0, 0, 0}
+Output : -1
+1's are not present in the array.
+
+
+#include<iostream>
+using namespace std;
+
+int fun(int n)
+{
+int a[n];
+for(int i=0;i<n;i++)
+ cin>>a[i];
+ 
+for(int i=0;i<n;i++)
+{
+    if(a[i]==1)
+     return i;
+}
+return -1;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    int n;
+    for(int i=1;i<=n;i++)
+    {
+     cin>>n;
+     int result=fun(n);
+     cout<<result<<"\n";
+    }
+    return 0;
+}
+*/
+
+
