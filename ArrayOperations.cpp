@@ -158,6 +158,31 @@ int main()
 */
 
 /*
+Merge two sorted arrays
+
+method 1:
+//below logic is without using extra space ie without using 3rd array 
+void merge(int arr1[], int arr2[], int n, int m) 
+{
+sort(arr1,arr1+n);
+sort(arr2,arr2+m);
+int r=n-1;
+for(int j=0;j<m&&r>=0;j++){
+if(arr2[j]<arr1[r])
+{ 
+    swap(arr2[j],arr1[r]);
+    r--;
+    
+}else if(arr2[j]>arr1[r])
+{
+break;
+}
+}
+sort(arr1,arr1+n);
+sort(arr2,arr2+m);
+}
+
+method 2:
 //Merge two sorted arrays
 #include<iostream>
 using namespace std;
